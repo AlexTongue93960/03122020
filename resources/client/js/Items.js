@@ -86,7 +86,7 @@ function formatWeaponsList(myJSONArray){
 function setItemStats(Name){
     let dataHTML = "";
     let Table = document.getElementById("StatName");
-    dataHTML = "<tr><td>" + Name +"<tr><td>";
+    dataHTML = "<a>" + Name +"</a>";
     Table.innerHTML = dataHTML;
     getItemStats(Name);
 }
@@ -112,17 +112,13 @@ function formatItemStats(stats){
     let dataHTML3 = "";
     let dataHTML4 = "";
     let dataHTML5 = "";
-    dataHTML1 += "<tr;><td>" + stats.ItemType + "<tr><td>";
     dataHTML2 += "<tr><td>" + stats.Lore + "<tr><td>";
     dataHTML3 += "<tr><td>" + stats.Rarity + " "+ stats.SubType + "<tr><td>";
     dataHTML4 += "<tr><td>" + stats.Class + "<tr><td>";
-    dataHTML5 += "<tr><td>" + stats.SubType + "<tr><td>";
-
-
     document.getElementById("ItemType").innerHTML = dataHTML3;
     document.getElementById("Lore").innerHTML = dataHTML2;
     document.getElementById("Rarity").innerHTML =  dataHTML4;
-    document.getElementById("SubType").innerHTML = dataHTML5;
+    document.getElementById("Image").innerHTML =  dataHTML5;
 }
 
 
@@ -130,4 +126,8 @@ function formatItemStats(stats){
 function clearTable(){
     let Table = document.getElementById("ItemsTable");
     Table.innerHTML = "";
+    document.getElementById("ItemType").innerHTML = "";
+    document.getElementById("Lore").innerHTML = "";
+    document.getElementById("Rarity").innerHTML =  "";
+    document.getElementById("StatName").innerHTML = "";
 }

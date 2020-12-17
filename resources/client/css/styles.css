@@ -31,10 +31,10 @@
 
 
 
-
-
-
-
+.Info{
+    position: absolute;
+    left: 50%;
+}
 .button {
     transition-duration: 0.4s;
     width: 150px;
