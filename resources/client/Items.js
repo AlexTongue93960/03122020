@@ -98,6 +98,22 @@ function setItemStats(Name){
             break;
         case "ACD/0 Feedback Fence":
             document.getElementById("Image").src = "img/ACD0FeedbackFence.jpg";
+            break;
+        case "Ace of Spades":
+            document.getElementById("Image").src = "img/Ace.jpg";
+            break;
+        case "Actium War Rig":
+            document.getElementById("Image").src = "img/Actium.jpg";
+            break;
+        case "Aeon Safe":
+            document.getElementById("Image").src = "img/Safe.jpg";
+            break;
+        case "Aeon Soul":
+            document.getElementById("Image").src = "img/soul.jpg";
+            break;
+        case "Aeon Swift":
+            document.getElementById("Image").src = "img/swift.jpg";
+            break;
         default:
             document.getElementById("Image").src = "img/image.jpg";
     }
