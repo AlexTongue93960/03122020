@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Destiny Database" uuid="46a6cc54-59a7-4f8d-a68f-587afdd00564">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\kingk\Downloads\New-Coursework-Reshuffle-df0332f08d9509b85222eb8c41dba861b2910d42\03122020\resources\Destiny Database.db</jdbc-url>
+    </data-source>
+  </component>
+</project>

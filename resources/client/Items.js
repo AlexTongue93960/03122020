@@ -85,9 +85,22 @@ function formatWeaponsList(myJSONArray){
 
 function setItemStats(Name){
     let dataHTML = "";
+    let dataHTML2 = "";
     let Table = document.getElementById("StatName");
     dataHTML = "<a>" + Name +"</a>";
     Table.innerHTML = dataHTML;
+    switch (Name){
+        case "An Insurmountable Skullfort":
+            document.getElementById("Image").src = "img/AnInsurmountableSkullfort.jpg";
+            break;
+        case "Ashen Wake":
+            document.getElementById("Image").src = "img/AshenWake.jpg";
+            break;
+        case "ACD/0 Feedback Fence":
+            document.getElementById("Image").src = "img/ACD0FeedbackFence.jpg";
+        default:
+            document.getElementById("Image").src = "img/image.jpg";
+    }
     getItemStats(Name);
 }
 function getItemStats(Name){
@@ -107,7 +120,6 @@ function getItemStats(Name){
     });
 }
 function formatItemStats(stats){
-    let dataHTML1 = "";
     let dataHTML2 = "";
     let dataHTML3 = "";
     let dataHTML4 = "";
@@ -117,17 +129,19 @@ function formatItemStats(stats){
     dataHTML4 += "<tr><td>" + stats.Class + "<tr><td>";
     document.getElementById("ItemType").innerHTML = dataHTML3;
     document.getElementById("Lore").innerHTML = dataHTML2;
-    document.getElementById("Rarity").innerHTML =  dataHTML4;
-    document.getElementById("Image").innerHTML =  dataHTML5;
+    document.getElementById("Class").innerHTML =  dataHTML4;
 }
-
-
 
 function clearTable(){
     let Table = document.getElementById("ItemsTable");
     Table.innerHTML = "";
     document.getElementById("ItemType").innerHTML = "";
     document.getElementById("Lore").innerHTML = "";
-    document.getElementById("Rarity").innerHTML =  "";
     document.getElementById("StatName").innerHTML = "";
+    document.getElementById("Class").innerHTML = "";
+}
+function changeImage(){
+    let data = "";
+    data += "<img src='img/AshenWake.jpg'>";
+    document.getElementById("Image").src = "img/AshenWake.jpg";
 }

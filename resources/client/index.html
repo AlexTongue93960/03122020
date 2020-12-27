@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Destiny 2 Wiki</title>
-    <script src="/client/js/Items.js"></script>
+    <script src="/client/Items.js"></script>
     <link rel="stylesheet" type="text/css" href="/client/css/styles.css">
 </head>
 <body id="body">
@@ -16,13 +16,15 @@
     <button class="button" onclick="clearTable()">Reset Lists</button>
     <table class="Results" id="ItemsTable"></table>
 </div>
-
-<img id="Image" src="img/ACD0FeedbackFence.jpg">
-<a id="StatName"></a>
-<table id="ItemType"></table>
-<table id="Class"></table>
-<table id="Rarity"></table>
-<table id="Lore"></table>
-
+<div class="container">
+    <img id="Image" src="img/AnInsurmountableSkullfort.jpg">
+    <div class="top-left">
+        <a id="StatName"></a>
+        <table id="ItemType"></table>
+        <table id="Class"></table>
+        <button class="button" onclick="changeImage();">Change Image</button>
+    </div>
+    <div class="bottom-left"><table id="Lore"></table></div>
+</div>
 </body>
 </html>
