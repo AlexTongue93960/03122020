@@ -143,9 +143,26 @@ function formatItemStats(stats){
     dataHTML2 += "<tr><td>" + stats.Lore + "<tr><td>";
     dataHTML3 += "<tr><td>" + stats.Rarity + " "+ stats.SubType + "<tr><td>";
     dataHTML4 += "<tr><td>" + stats.Class + "<tr><td>";
+    dataHTML5 += "<tr><td>" + stats.ItemType + "<tr><td>";
     document.getElementById("ItemType").innerHTML = dataHTML3;
     document.getElementById("Lore").innerHTML = dataHTML2;
     document.getElementById("Class").innerHTML =  dataHTML4;
+    switch(stats.ItemType){
+        case "Armour":
+            document.getElementById("Mod1").src = "img/Discipline.jpg";
+            document.getElementById("Mod2").src = "img/Strength.jpg";
+            document.getElementById("Mod3").src = "img/Intellect.jpg";
+            document.getElementById("Mod4").src = "img/Resilience.jpg";
+            document.getElementById("Mod5").src = "img/Recovery.jpg";
+            break;
+        case "Weapon":
+            document.getElementById("Mod1").src = "img/Minor.jpg";
+            document.getElementById("Mod2").src = "img/Major.jpg";
+            document.getElementById("Mod3").src = "img/Boss.jpg";
+            document.getElementById("Mod4").src = "img/Backup.jpg";
+            document.getElementById("Mod5").src = "img/Radar.jpg";
+            break;
+    }
 }
 
 function clearTable(){
