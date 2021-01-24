@@ -115,7 +115,7 @@ function setItemStats(Name){
             document.getElementById("Image").src = "img/swift.jpg";
             break;
         default:
-            document.getElementById("Image").src = "img/image.jpg";
+            document.getElementById("Image").src = "img/Image.jpg";
     }
     getItemStats(Name);
 }
@@ -149,11 +149,11 @@ function formatItemStats(stats){
     document.getElementById("Class").innerHTML =  dataHTML4;
     switch(stats.ItemType){
         case "Armour":
-            document.getElementById("Mod1").src = "img/Discipline.jpg";
-            document.getElementById("Mod2").src = "img/Strength.jpg";
-            document.getElementById("Mod3").src = "img/Intellect.jpg";
-            document.getElementById("Mod4").src = "img/Resilience.jpg";
-            document.getElementById("Mod5").src = "img/Recovery.jpg";
+            document.getElementById("Mod1").src = "img/Discipline.png";
+            document.getElementById("Mod2").src = "img/Strength.png";
+            document.getElementById("Mod3").src = "img/Intellect.png";
+            document.getElementById("Mod4").src = "img/Resilience.png";
+            document.getElementById("Mod5").src = "img/Recovery.png";
             break;
         case "Weapon":
             document.getElementById("Mod1").src = "img/Minor.jpg";
