@@ -39,18 +39,11 @@ function getArmourList() {
         if (response.hasOwnProperty("Error")) { //checks if response from the web server has an "Error"
             alert(JSON.stringify(response));    // if it does, convert JSON object to string and alert (pop up window)
         } else {
-            formatArmourList(response);
+            formatItemsList(response);
         }
     });
 }
 
-function formatArmourList(myJSONArray){
-    let dataHTML = "";
-    for (let item of myJSONArray) {
-        dataHTML += "<tr><td>" + "<button class='resultbutton' onclick='clearTable(); setItemStats(" + JSON.stringify(item.ItemName) + ")'>" + item.ItemName +"</button>" + "<tr><td>";
-    }
-    document.getElementById("ItemsTable").innerHTML = dataHTML;
-}
 
 
 
@@ -70,18 +63,11 @@ function getWeaponsList() {
         if (response.hasOwnProperty("Error")) { //checks if response from the web server has an "Error"
             alert(JSON.stringify(response));    // if it does, convert JSON object to string and alert (pop up window)
         } else {
-            formatWeaponsList(response);          //this function will create an HTML table of the data (as per previous lesson)
+            formatItemsList(response);          //this function will create an HTML table of the data (as per previous lesson)
         }
     });
 }
 
-function formatWeaponsList(myJSONArray){
-    let dataHTML = "";
-    for (let item of myJSONArray) {
-        dataHTML += "<tr><td>" + "<button class='resultbutton' onclick='clearTable(); setItemStats(" + JSON.stringify(item.ItemName) + ")'>" + item.ItemName +"</button>" + "<tr><td>";
-    }
-    document.getElementById("ItemsTable").innerHTML = dataHTML;
-}
 
 function setItemStats(Name){
     let dataHTML = "";
@@ -89,14 +75,12 @@ function setItemStats(Name){
     let Table = document.getElementById("StatName");
     dataHTML = "<a>" + Name +"</a>";
     Table.innerHTML = dataHTML;
+    getItemID(Name);
     switch (Name){
-        case "An Insurmountable Skullfort":
-            document.getElementById("Image").src = "img/AnInsurmountableSkullfort.jpg";
-            break;
         case "Ashen Wake":
             document.getElementById("Image").src = "img/AshenWake.jpg";
             break;
-        case "ACD/0 Feedback Fence":
+        case "ACD0 Feedback Fence":
             document.getElementById("Image").src = "img/ACD0FeedbackFence.jpg";
             break;
         case "Ace of Spades":
@@ -118,6 +102,27 @@ function setItemStats(Name){
             document.getElementById("Image").src = "img/Image.jpg";
     }
     getItemStats(Name);
+}
+function getItemID(Name){
+    //debugger;
+    console.log("Invoked getItemID()");     //console.log your BFF for debugging client side - also use debugger statement
+    const url = "/items/getID/" + Name;    		// API method on web server will be in Users class, method list
+    fetch(url, {
+        method: "GET",				//Get method
+    }).then(response => {
+        return response.json();                 //return response as JSON
+    }).then(response => {
+        if (response.hasOwnProperty("Error")) { //checks if response from the web server has an "Error"
+            alert(JSON.stringify(response));    // if it does, convert JSON object to string and alert (pop up window)
+        } else {
+            formatImage(response);          //this function will create an HTML table of the data (as per previous lesson)
+        }
+    });
+}
+function formatImage(ItemID){
+    let dataHTML = "";
+    dataHTML = "img/" + ItemID.ItemID +".jpg";
+    document.getElementById("Image").src = dataHTML;
 }
 function getItemStats(Name){
     //debugger;
@@ -154,6 +159,7 @@ function formatItemStats(stats){
             document.getElementById("Mod3").src = "img/Intellect.png";
             document.getElementById("Mod4").src = "img/Resilience.png";
             document.getElementById("Mod5").src = "img/Recovery.png";
+            document.getElementById("Information Page").innerHTML= <a id="Information Page" href="ArmourMods.html">Click Here For More Information On Armour Mods</a>;
             break;
         case "Weapon":
             document.getElementById("Mod1").src = "img/Minor.jpg";
@@ -161,6 +167,7 @@ function formatItemStats(stats){
             document.getElementById("Mod3").src = "img/Boss.jpg";
             document.getElementById("Mod4").src = "img/Backup.jpg";
             document.getElementById("Mod5").src = "img/Radar.jpg";
+            document.getElementById("Information Page").innerHTML= <a id="Information Page" href="WeaponMods.html">Click Here For More Information On Weapon Mods</a>;
             break;
     }
 }

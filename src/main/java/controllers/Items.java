@@ -56,13 +56,16 @@ public class Items{
     }
     @POST
     @Path("add")
-    public String ItemsAdd(@FormDataParam("ItemID") Integer ItemID, @FormDataParam("ItemName") String ItemName, @FormDataParam("SubType") String SubType) {
+    public String ItemsAdd(@FormDataParam("ItemID") Integer ItemID, @FormDataParam("ItemName") String ItemName, @FormDataParam("SubType") String SubType, @FormDataParam("Lore") String Lore, @FormDataParam("Class") String Class, @FormDataParam("ItemType") String ItemType) {
         System.out.println("Invoked Items.ItemsAdd()");
         try {
-            PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Items (ItemID, ItemName, SubType) VALUES (?, ?, ?)");
+            PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Items (ItemID, ItemName, SubType, Lore, Class, ItemType) VALUES (?, ?, ?, ?, ?, ?)");
             ps.setInt(1, ItemID);
             ps.setString(2, ItemName);
             ps.setString(3, SubType);
+            ps.setString(4, Lore);
+            ps.setString(5, Class);
+            ps.setString(6, ItemType);
             ps.execute();
             return "{\"OK\": \"Added Item.\"}";
         } catch (Exception exception) {
@@ -151,6 +154,25 @@ public class Items{
             return "{\"Error\": \"Unable to get item, please see server console for more info.\"}";
         }
     }
-
+    @GET
+    @Path("getID/{ItemName}")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String IDFetch(@PathParam("ItemName") String ItemName) {
+        System.out.println("Invoked Items.GetID() with ItemName " + ItemName);
+        try {
+            PreparedStatement ps = Main.db.prepareStatement("SELECT ItemID FROM Items WHERE ItemName = ?");
+            ps.setString(1, ItemName);
+            ResultSet results = ps.executeQuery();
+            JSONObject response = new JSONObject();
+            if (results.next()== true) {
+                response.put("ItemID", results.getInt(1));
+            }
+            return response.toString();
+        } catch (Exception exception) {
+            System.out.println("Database error: " + exception.getMessage());
+            return "{\"Error\": \"Unable to get item, please see server console for more info.\"}";
+        }
+    }
 }
 
