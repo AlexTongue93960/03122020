@@ -84,7 +84,7 @@ function setItemStats(Name){
             document.getElementById("Image").src = "img/ACD0FeedbackFence.jpg";
             break;
         case "Ace of Spades":
-            document.getElementById("Image").src = "img/Ace.jpg";
+            document.getElementById("Image").src = "img/84.jpg";
             break;
         case "Actium War Rig":
             document.getElementById("Image").src = "img/Actium.jpg";
@@ -159,7 +159,7 @@ function formatItemStats(stats){
             document.getElementById("Mod3").src = "img/Intellect.png";
             document.getElementById("Mod4").src = "img/Resilience.png";
             document.getElementById("Mod5").src = "img/Recovery.png";
-            document.getElementById("Information Page").innerHTML= <a id="Information Page" href="ArmourMods.html">Click Here For More Information On Armour Mods</a>;
+            document.getElementById("Information").innerHTML = "<a id='Information Page' href='ArmourMods.html'>Click Here For More Information On Armour Mods</a>;"
             break;
         case "Weapon":
             document.getElementById("Mod1").src = "img/Minor.jpg";
@@ -167,7 +167,7 @@ function formatItemStats(stats){
             document.getElementById("Mod3").src = "img/Boss.jpg";
             document.getElementById("Mod4").src = "img/Backup.jpg";
             document.getElementById("Mod5").src = "img/Radar.jpg";
-            document.getElementById("Information Page").innerHTML= <a id="Information Page" href="WeaponMods.html">Click Here For More Information On Weapon Mods</a>;
+            document.getElementById("Information").innerHTML = "<a id='Information Page' href='WeaponMods.html'>Click Here For More Information On Weapon Mods</a>;"
             break;
     }
 }
@@ -184,4 +184,20 @@ function changeImage(){
     let data = "";
     data += "<img src='img/AshenWake.jpg'>";
     document.getElementById("Image").src = "img/AshenWake.jpg";
+}
+function userSearch(Name){
+    //debugger;
+    console.log("Invoked userSearch()");     //console.log your BFF for debugging client side - also use debugger statement
+    const url = "/items/get/" + Name;    		// API method on web server will be in Users class, method list
+    fetch(url, {
+        method: "GET",				//Get method
+    }).then(response => {
+        return response.json();                 //return response as JSON
+    }).then(response => {
+        if (response.hasOwnProperty("Error")) { //checks if response from the web server has an "Error"
+            alert(JSON.stringify(response));    // if it does, convert JSON object to string and alert (pop up window)
+        } else {
+            formatItemStats(response);          //this function will create an HTML table of the data (as per previous lesson)
+        }
+    });
 }

@@ -174,5 +174,25 @@ public class Items{
             return "{\"Error\": \"Unable to get item, please see server console for more info.\"}";
         }
     }
+    @GET
+    @Path("search/{ItemName}")
+    public String ItemSearch() {
+        System.out.println("Invoked Items.Items.One()");
+        JSONArray response = new JSONArray();
+        try {
+            PreparedStatement ps = Main.db.prepareStatement("SELECT ItemName FROM Items WHERE ItemName LIKE ?");
+            ResultSet results = ps.executeQuery();
+            while (results.next()==true) {
+                JSONObject row = new JSONObject();
+                row.put("ItemName", results.getString(1));
+                response.add(row);
+            }
+            return response.toString();
+        } catch (Exception exception) {
+            System.out.println("Database error: " + exception.getMessage());
+            return "{\"Error\": \"Unable to list items.  Error code xx.\"}";
+        }
+    }
 }
+
 
